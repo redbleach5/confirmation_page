@@ -14,7 +14,7 @@
       Telegram.WebApp.ready();
       setTimeout(function(){
         Telegram.WebApp.close();
-      }, 2500);
+      }, 2000);
     }
   </script>
 </body>
