@@ -51,20 +51,25 @@
     <div class="loader"></div>
   </div>
   <script>
-    // Этот скрипт работает только в рамках Telegram Web App
-    if (window.Telegram && Telegram.WebApp) {
-      console.log("Telegram WebApp detected");
-      Telegram.WebApp.ready();
-      setTimeout(function(){
-        console.log("Closing Telegram WebApp");
-        Telegram.WebApp.close();
-      }, 2000);
-    } else {
-      console.log("Telegram WebApp not detected, closing window");
-      setTimeout(function(){
-        window.close();
-      }, 2000);
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.Telegram && Telegram.WebApp) {
+        console.log("Telegram WebApp detected");
+        Telegram.WebApp.ready();
+        setTimeout(function(){
+          try {
+            console.log("Attempting to close Telegram WebApp");
+            Telegram.WebApp.close();
+          } catch (e) {
+            console.error("Error closing Telegram WebApp:", e);
+          }
+        }, 3000); // увеличиваем задержку до 3 секунд для уверенности
+      } else {
+        console.log("Telegram WebApp not detected, attempting window.close()");
+        setTimeout(function(){
+          window.close();
+        }, 3000);
+      }
+    });
   </script>
 </body>
 </html>
