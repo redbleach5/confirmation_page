@@ -53,12 +53,14 @@
   <script>
     // Этот скрипт работает только в рамках Telegram Web App
     if (window.Telegram && Telegram.WebApp) {
+      console.log("Telegram WebApp detected");
       Telegram.WebApp.ready();
       setTimeout(function(){
+        console.log("Closing Telegram WebApp");
         Telegram.WebApp.close();
       }, 2000);
     } else {
-      // Если скрипт не работает в Telegram Web App, закрываем окно через 2 секунды
+      console.log("Telegram WebApp not detected, closing window");
       setTimeout(function(){
         window.close();
       }, 2000);
