@@ -57,6 +57,11 @@
       setTimeout(function(){
         Telegram.WebApp.close();
       }, 2000);
+    } else {
+      // Если скрипт не работает в Telegram Web App, закрываем окно через 2 секунды
+      setTimeout(function(){
+        window.close();
+      }, 2000);
     }
   </script>
 </body>
